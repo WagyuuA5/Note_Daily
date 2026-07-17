@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Migration Report</title>
+  <style>
+    :root {
+      --bg: #f3f3f4;
+      --card: #ffffff;
+      --border: #d9d9d9;
+      --text: #222222;
+      --muted: #666666;
+      --warning: #b45309;
+      --warning-bg: #fff7ed;
+      --info: #2563eb;
+      --info-bg: #eff6ff;
+      --success: #15803d;
+      --success-bg: #f0fdf4;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 24px; background: var(--bg); color: var(--text); font-family: Segoe UI, Arial, sans-serif; }
+    .container { max-width: 1100px; margin: 0 auto; background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .header { background: #e5e7eb; padding: 18px 24px; border-bottom: 1px solid var(--border); }
+    .header h1 { margin: 0; font-size: 1.35rem; font-weight: 600; }
+    .content { padding: 24px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 20px; }
+    .box { border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+    .box ul { margin: 6px 0 0 18px; padding: 0; }
+    .warning { background: var(--warning-bg); border-color: #fed7aa; color: var(--warning); }
+    .success { background: var(--success-bg); border-color: #bbf7d0; color: var(--success); }
+    .panel { border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+    .panel h3 { margin: 0 0 10px; font-size: 1rem; }
+    .message { border-radius: 8px; padding: 12px 14px; margin-top: 8px; }
+    .message.info { background: var(--info-bg); color: var(--info); }
+    .message.success { background: var(--success-bg); color: var(--success); }
+    .message.warning { background: var(--warning-bg); color: var(--warning); }
+    .muted { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Migration Report</h1>
+    </div>
+    <div class="content">
+      <div class="grid">
+        <div class="box warning">
+          <strong>Solution</strong>
+          <ul>
+            <li>Errors: 0</li>
+            <li>Warnings: 1</li>
+            <li>Messages: 2</li>
+          </ul>
+        </div>
+        <div class="box success">
+          <strong>BlazorApp1_newproject</strong>
+          <ul>
+            <li>Errors: 0</li>
+            <li>Warnings: 0</li>
+            <li>Messages: 0</li>
+          </ul>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Solution</h3>
+        <div class="message warning">BlazorApp1_newproject.sln<br />Visual Studio needs to make non-functional changes to this project in order to enable the project to open in released versions of Visual Studio newer than Visual Studio 2010 SP1 without impacting project behavior.</div>
+        <div class="message info">Backup<br />File successfully backed up as D:\Prakerin_15_07_2026\Backup\BlazorApp1_newproject.sln</div>
+        <div class="message info">Status<br />Solution migrated successfully</div>
+      </div>
+      <div class="panel">
+        <h3>BlazorApp1_newproject</h3>
+        <div class="message success">BlazorApp1_newproject logged no messages.</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

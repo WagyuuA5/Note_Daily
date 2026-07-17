@@ -1,0 +1,31 @@
+<nav class="navbar">
+    <a href="/" class="navbar-brand">
+        <div class="brand-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+        </div>
+        Note Daily
+    </a>
+
+    <button class="hamburger-menu" @onclick="ToggleMenu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+    </button>
+
+    <div class="navbar-menu @(isMenuOpen ? "show" : "")">
+        <a href="/" class="nav-link active">Beranda</a>
+        <a href="/tasks" class="nav-link">Tugas</a>
+        <a href="/about" class="nav-link">Tentang</a>
+    </div>
+
+    <div class="nav-right @(isMenuOpen ? "show" : "")">
+        <a href="/docs" class="doc-link">Dokumentasi</a>
+    </div>
+</nav>
+
+@code {
+    private bool isMenuOpen = false;
+
+    private void ToggleMenu()
+    {
+        isMenuOpen = !isMenuOpen;
+    }
+}

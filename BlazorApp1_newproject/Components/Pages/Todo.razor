@@ -1,0 +1,78 @@
+﻿@page "/tasks"
+@rendermode InteractiveServer
+
+<PageTitle>Daftar Tugas</PageTitle>
+
+<div class="todo-page">
+    <section class="todo-card">
+        <div class="todo-header">
+            <div>
+                <p class="todo-eyebrow">Manajemen Tugas</p>
+                <h1>Kelola pekerjaan Anda dengan lebih rapi</h1>
+            </div>
+            <div class="todo-badge">@completedCount dari @tasks.Count selesai</div>
+        </div>
+
+        <div class="todo-form">
+            <input @bind="newTaskTitle" placeholder="Tambah tugas baru..." />
+            <button class="btn btn-primary" @onclick="AddTask">Tambah</button>
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(errorMessage))
+        {
+            <div class="alert">@errorMessage</div>
+        }
+
+        <div class="todo-list">
+            @foreach (var task in tasks)
+            {
+                <div class="todo-item @(task.IsCompleted ? "completed" : string.Empty)">
+                    <label class="todo-check">
+                        <input type="checkbox" @bind="task.IsCompleted" />
+                        <span>@task.Title</span>
+                    </label>
+                    <button class="btn btn-danger" @onclick="() => RemoveTask(task)">Hapus</button>
+                </div>
+            }
+        </div>
+    </section>
+</div>
+
+@code {
+    private List<TaskItem> tasks = new()
+    {
+        new() { Title = "Review desain halaman", IsCompleted = true },
+        new() { Title = "Siapkan struktur navigasi", IsCompleted = false },
+        new() { Title = "Uji fitur daftar tugas", IsCompleted = false }
+    };
+
+    private string newTaskTitle = string.Empty;
+    private string errorMessage = string.Empty;
+
+    private int completedCount => tasks.Count(task => task.IsCompleted);
+
+    private void AddTask()
+    {
+        if (string.IsNullOrWhiteSpace(newTaskTitle))
+        {
+            errorMessage = "Judul tugas tidak boleh kosong.";
+            return;
+        }
+
+        tasks.Add(new TaskItem { Title = newTaskTitle.Trim() });
+        newTaskTitle = string.Empty;
+        errorMessage = string.Empty;
+    }
+
+    private void RemoveTask(TaskItem task)
+    {
+        tasks.Remove(task);
+        errorMessage = string.Empty;
+    }
+
+    private sealed class TaskItem
+    {
+        public string? Title { get; set; }
+        public bool IsCompleted { get; set; }
+    }
+}
